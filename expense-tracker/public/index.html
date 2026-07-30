@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expense Tracker</title>
+  <script>
+    // Entry point: send visitors straight to the right place.
+    const hasSession = !!localStorage.getItem('expenseTracker_user');
+    window.location.replace(hasSession ? '/dashboard.html' : '/login.html');
+  </script>
+</head>
+<body>
+</body>
+</html>

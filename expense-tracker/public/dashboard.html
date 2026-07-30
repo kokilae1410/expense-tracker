@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · Expense Tracker</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">₹</div>
+        <span>Expense Tracker</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+        <a href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+        <a href="reports.html"><span class="nav-icon">📈</span> Reports</a>
+        <a href="budget.html"><span class="nav-icon">🎯</span> Budget</a>
+        <a href="profile.html"><span class="nav-icon">👤</span> Profile</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-secondary" data-action="logout">🚪 Log Out</button>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="flex gap-8" style="align-items:center;">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="btn btn-primary" id="addTransactionBtn">+ Add Transaction</button>
+          <div class="user-chip" id="userChip">
+            <div class="avatar"></div>
+            <span class="user-name"></span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div id="budgetAlerts" class="hidden" style="margin-bottom: 16px;"></div>
+
+        <div class="stats-grid">
+          <div class="stat-card income">
+            <div class="stat-label">Total Income <span class="stat-icon income">↑</span></div>
+            <div class="stat-value" id="totalIncome">₹0.00</div>
+          </div>
+          <div class="stat-card expense">
+            <div class="stat-label">Total Expense <span class="stat-icon expense">↓</span></div>
+            <div class="stat-value" id="totalExpense">₹0.00</div>
+          </div>
+          <div class="stat-card balance">
+            <div class="stat-label">Remaining Balance <span class="stat-icon balance">＝</span></div>
+            <div class="stat-value" id="balance">₹0.00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">This Month's Expense <span class="stat-icon budget">🎯</span></div>
+            <div class="stat-value" id="monthExpense">₹0.00</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="card">
+            <div class="card-header"><h3>Income vs Expense (Last 6 Months)</h3></div>
+            <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>Expense by Category (This Month)</h3></div>
+            <div class="chart-wrap">
+              <canvas id="pieChart"></canvas>
+              <div class="empty-state hidden" id="pieChartEmpty">
+                <div class="empty-icon">🥧</div>
+                <p>No expenses recorded this month</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Recent Transactions</h3>
+            <a href="/transactions.html" class="btn btn-secondary btn-sm">View All</a>
+          </div>
+          <ul class="recent-list" id="recentList"></ul>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/notifications.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/transaction-modal.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

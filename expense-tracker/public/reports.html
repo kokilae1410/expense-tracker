@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports · Expense Tracker</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">₹</div>
+        <span>Expense Tracker</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+        <a href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+        <a href="reports.html"><span class="nav-icon">📈</span> Reports</a>
+        <a href="budget.html"><span class="nav-icon">🎯</span> Budget</a>
+        <a href="profile.html"><span class="nav-icon">👤</span> Profile</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-secondary" data-action="logout">🚪 Log Out</button>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="flex gap-8" style="align-items:center;">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <h1>Reports</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-chip" id="userChip">
+            <div class="avatar"></div>
+            <span class="user-name"></span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="card">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="daily">Daily</button>
+            <button class="tab-btn" data-tab="monthly">Monthly</button>
+            <button class="tab-btn" data-tab="yearly">Yearly</button>
+          </div>
+
+          <div class="report-panel" id="panel-daily">
+            <div class="filters-bar">
+              <div class="filter-group">
+                <label for="dailyFrom">From</label>
+                <input type="date" id="dailyFrom" />
+              </div>
+              <div class="filter-group">
+                <label for="dailyTo">To</label>
+                <input type="date" id="dailyTo" />
+              </div>
+              <div class="filter-group">
+                <label>&nbsp;</label>
+                <button class="btn btn-primary" id="applyDailyRange">Apply</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-panel hidden" id="panel-monthly">
+            <div class="filters-bar">
+              <div class="filter-group">
+                <label for="yearSelect">Year</label>
+                <select id="yearSelect"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-panel hidden" id="panel-yearly">
+            <p class="text-muted">Showing totals across all years on record.</p>
+          </div>
+
+          <div class="summary-row" id="reportSummary"></div>
+
+          <div class="chart-wrap" style="height: 320px;">
+            <canvas id="reportChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h3>Detailed Breakdown</h3></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Period</th>
+                  <th>Income</th>
+                  <th>Expense</th>
+                  <th>Net</th>
+                </tr>
+              </thead>
+              <tbody id="reportTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/notifications.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/reports.js"></script>
+</body>
+</html>
